@@ -12,7 +12,6 @@ import {
   FieldSeparator,
   FieldSet,
 } from "@/src/shared/components/ui/field";
-import { Input } from "@/src/shared/components/ui/input";
 import {
   NOTIFICATION_TYPES,
   Project,
@@ -37,6 +36,7 @@ import {
   InputGroupInput,
 } from "@/src/shared/components/ui/input-group";
 import { XIcon } from "lucide-react";
+import { FormInput } from "@/src/shared/components/form";
 
 export default function Home() {
   const form = useForm({
@@ -78,23 +78,7 @@ export default function Home() {
         <h1>Form Tet</h1>
 
         <FieldGroup>
-          <Controller
-            name="name"
-            control={form.control}
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <FieldLabel htmlFor={field.name}>Name</FieldLabel>
-                <Input
-                  {...field}
-                  id={field.name}
-                  aria-invalid={fieldState.invalid}
-                />
-                {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-                )}
-              </Field>
-            )}
-          />
+          <FormInput control={form.control} name="name" label="Name" />
 
           <Controller
             name="description"
